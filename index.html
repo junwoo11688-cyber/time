@@ -635,7 +635,7 @@
             </div>
             <blockquote id="quoteText"></blockquote>
             <div class="citation">
-              <span><strong id="workTitle">Dracula</strong> · <span id="authorName">Bram Stoker</span></span>
+              <span><strong id="workTitle">드라큘라</strong> · <span id="authorName">브램 스토커</span></span>
               <a id="sourceLink" href="#" target="_blank" rel="noreferrer">자료 보기</a>
             </div>
             <div class="mini-clock">
@@ -767,6 +767,14 @@
       };
     }
 
+    function displayWork(entry) {
+      return entry.displayWork || entry.work;
+    }
+
+    function displayAuthor(entry) {
+      return entry.displayAuthor || entry.author;
+    }
+
     function escapeHtml(value) {
       return String(value ?? "").replace(/[&<>"']/g, (char) => ({
         "&": "&amp;",
@@ -839,14 +847,14 @@
         const button = document.createElement("button");
         button.type = "button";
         button.className = "hour-button";
-        button.title = `${time.label} · ${entry.work} · ${entry.author}`;
+        button.title = `${time.label} · ${displayWork(entry)} · ${displayAuthor(entry)}`;
         button.dataset.minute = index;
         button.setAttribute("aria-pressed", index === activeMinuteIndex ? "true" : "false");
         button.innerHTML = `
           <span class="hour-top">
             <span class="hour-time">${time.label}</span>
           </span>
-          <span class="hour-work">${entry.work}</span>
+          <span class="hour-work">${displayWork(entry)}</span>
         `;
         button.addEventListener("click", () => {
           state.live = false;
@@ -888,8 +896,8 @@
       els.quoteHour.textContent = selected.label;
       els.quoteText.innerHTML = highlightQuote(entry);
       els.quoteText.className = entry.quote.length > 300 ? "quote-very-long" : entry.quote.length > 180 ? "quote-long" : "";
-      els.workTitle.textContent = entry.work;
-      els.authorName.textContent = entry.author;
+      els.workTitle.textContent = displayWork(entry);
+      els.authorName.textContent = displayAuthor(entry);
       els.sourceLink.href = entry.sourceUrl;
       els.sourceLink.textContent = "자료 보기";
 
