@@ -21,6 +21,22 @@
       --shadow: rgba(0, 0, 0, 0.34);
     }
 
+    :root[data-theme="light"] {
+      color-scheme: light;
+      --ink: #f5efe4;
+      --ink-soft: #efe4d2;
+      --paper: #2a241b;
+      --paper-muted: #695f50;
+      --brass: #9a6b25;
+      --moss: #6f8a63;
+      --moss-deep: #e4ecd9;
+      --wine: #9e554f;
+      --line: rgba(82, 68, 48, 0.24);
+      --glass: rgba(255, 251, 243, 0.82);
+      --glass-light: rgba(154, 107, 37, 0.1);
+      --shadow: rgba(73, 57, 35, 0.2);
+    }
+
     * {
       box-sizing: border-box;
     }
@@ -84,6 +100,16 @@
         linear-gradient(180deg, rgba(12, 14, 11, 0.34), rgba(12, 14, 11, 0.82));
     }
 
+    :root[data-theme="light"] .stage::before {
+      filter: saturate(0.8) contrast(0.9) brightness(1.42);
+    }
+
+    :root[data-theme="light"] .stage::after {
+      background:
+        linear-gradient(90deg, rgba(250, 244, 233, 0.9), rgba(250, 244, 233, 0.72) 48%, rgba(250, 244, 233, 0.88)),
+        linear-gradient(180deg, rgba(255, 251, 244, 0.52), rgba(238, 225, 205, 0.86));
+    }
+
     .app {
       width: min(1180px, calc(100% - 48px));
       min-height: 100vh;
@@ -101,6 +127,14 @@
       justify-content: space-between;
       gap: 18px;
       color: var(--paper-muted);
+    }
+
+    .top-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: end;
     }
 
     .brand {
@@ -122,6 +156,10 @@
       box-shadow: 0 12px 30px var(--shadow);
       color: var(--brass);
       font-size: 1.2rem;
+    }
+
+    :root[data-theme="light"] .mark {
+      background: rgba(255, 251, 243, 0.72);
     }
 
     .brand h1 {
@@ -156,12 +194,55 @@
       white-space: nowrap;
     }
 
+    :root[data-theme="light"] .mode-pill {
+      background: rgba(255, 251, 243, 0.72);
+    }
+
     .mode-dot {
       width: 8px;
       height: 8px;
       border-radius: 999px;
       background: var(--brass);
       box-shadow: 0 0 14px rgba(201, 155, 84, 0.9);
+    }
+
+    .theme-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 36px;
+      padding: 8px 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(21, 23, 19, 0.48);
+      color: var(--paper);
+      font-family: "Segoe UI", "Noto Sans KR", sans-serif;
+      font-size: 0.82rem;
+      white-space: nowrap;
+      transition: background 160ms ease, border-color 160ms ease, transform 160ms ease;
+    }
+
+    .theme-toggle::before {
+      width: 12px;
+      height: 12px;
+      content: "";
+      border-radius: 999px;
+      background: linear-gradient(135deg, #f6d99a 0 50%, #75634d 50% 100%);
+      box-shadow: 0 0 12px rgba(201, 155, 84, 0.58);
+    }
+
+    .theme-toggle:hover {
+      border-color: rgba(201, 155, 84, 0.78);
+      background: rgba(201, 155, 84, 0.16);
+      transform: translateY(-1px);
+    }
+
+    :root[data-theme="light"] .theme-toggle {
+      background: rgba(255, 251, 243, 0.72);
+    }
+
+    :root[data-theme="light"] .theme-toggle::before {
+      background: linear-gradient(135deg, #fff1bd 0 50%, #a77834 50% 100%);
     }
 
     .main-grid {
@@ -225,6 +306,11 @@
       background: rgba(21, 23, 19, 0.34);
     }
 
+    :root[data-theme="light"] .date-line span {
+      border-color: rgba(82, 68, 48, 0.16);
+      background: rgba(255, 251, 243, 0.72);
+    }
+
     .quote-panel {
       min-width: 0;
       padding: 34px;
@@ -233,6 +319,10 @@
       background: var(--glass);
       box-shadow: 0 24px 70px rgba(0, 0, 0, 0.32);
       backdrop-filter: blur(16px);
+    }
+
+    :root[data-theme="light"] .quote-panel {
+      box-shadow: 0 24px 70px rgba(82, 68, 48, 0.18);
     }
 
     .quote-meta {
@@ -285,6 +375,12 @@
       text-underline-offset: 0.16em;
     }
 
+    :root[data-theme="light"] .time-word {
+      color: #6f4815;
+      background: rgba(201, 155, 84, 0.2);
+      text-decoration-color: rgba(111, 72, 21, 0.42);
+    }
+
     .citation {
       display: grid;
       gap: 5px;
@@ -327,6 +423,12 @@
       transition: background 160ms ease, border-color 160ms ease, transform 160ms ease;
     }
 
+    :root[data-theme="light"] .icon-button,
+    :root[data-theme="light"] .text-button {
+      border-color: rgba(82, 68, 48, 0.18);
+      background: rgba(255, 251, 243, 0.66);
+    }
+
     .icon-button {
       width: 42px;
       display: grid;
@@ -359,6 +461,11 @@
       background: rgba(21, 23, 19, 0.54);
     }
 
+    :root[data-theme="light"] .meter {
+      border-color: rgba(82, 68, 48, 0.18);
+      background: rgba(82, 68, 48, 0.1);
+    }
+
     .meter span {
       display: block;
       width: var(--minute-progress);
@@ -389,6 +496,11 @@
       box-shadow: 0 18px 48px rgba(0, 0, 0, 0.22);
     }
 
+    :root[data-theme="light"] .library-toggle {
+      background: rgba(255, 251, 243, 0.78);
+      box-shadow: 0 18px 48px rgba(82, 68, 48, 0.14);
+    }
+
     .library-toggle::after {
       content: "펼치기";
       color: var(--paper-muted);
@@ -409,6 +521,11 @@
       background: rgba(21, 23, 19, 0.68);
       box-shadow: 0 24px 70px rgba(0, 0, 0, 0.32);
       backdrop-filter: blur(16px);
+    }
+
+    :root[data-theme="light"] .library-panel {
+      background: rgba(255, 251, 243, 0.86);
+      box-shadow: 0 24px 70px rgba(82, 68, 48, 0.17);
     }
 
     .library-panel[hidden] {
@@ -463,10 +580,20 @@
       transition: background 160ms ease, border-color 160ms ease, transform 160ms ease;
     }
 
+    :root[data-theme="light"] .hour-chip {
+      border-color: rgba(82, 68, 48, 0.16);
+      background: rgba(154, 107, 37, 0.08);
+    }
+
     .hour-chip[aria-pressed="true"] {
       border-color: rgba(255, 227, 165, 0.82);
       background: rgba(201, 155, 84, 0.2);
       color: var(--paper);
+    }
+
+    :root[data-theme="light"] .hour-chip[aria-pressed="true"] {
+      border-color: rgba(154, 107, 37, 0.62);
+      background: rgba(201, 155, 84, 0.18);
     }
 
     .hour-grid {
@@ -490,9 +617,19 @@
       transition: background 160ms ease, border-color 160ms ease, transform 160ms ease;
     }
 
+    :root[data-theme="light"] .hour-button {
+      border-color: rgba(82, 68, 48, 0.16);
+      background: rgba(255, 251, 243, 0.64);
+    }
+
     .hour-button[aria-pressed="true"] {
       border-color: rgba(255, 227, 165, 0.86);
       background: rgba(201, 155, 84, 0.22);
+    }
+
+    :root[data-theme="light"] .hour-button[aria-pressed="true"] {
+      border-color: rgba(154, 107, 37, 0.66);
+      background: rgba(201, 155, 84, 0.18);
     }
 
     .hour-top {
@@ -505,6 +642,10 @@
       font-size: 1rem;
       font-weight: 700;
       font-variant-numeric: tabular-nums;
+    }
+
+    :root[data-theme="light"] .hour-time {
+      color: #7d531f;
     }
 
     .hour-work {
@@ -525,6 +666,10 @@
       padding-top: 16px;
       font-family: "Segoe UI", "Noto Sans KR", sans-serif;
       line-height: 1.55;
+    }
+
+    :root[data-theme="light"] .footer {
+      border-top-color: rgba(82, 68, 48, 0.16);
     }
 
     .footer a {
@@ -564,7 +709,16 @@
       }
 
       .mode-pill {
+        flex: 1 1 148px;
+        justify-content: center;
+      }
+
+      .top-actions,
+      .theme-toggle {
         width: 100%;
+      }
+
+      .theme-toggle {
         justify-content: center;
       }
 
@@ -620,9 +774,14 @@
             <p>시간이 문장으로 남아 있는 곳</p>
           </div>
         </div>
-        <div class="mode-pill" aria-live="polite">
-          <span class="mode-dot" aria-hidden="true"></span>
-          <span id="modeLabel">현재 시간</span>
+        <div class="top-actions">
+          <button class="theme-toggle" id="themeToggle" type="button" aria-pressed="false">
+            <span id="themeLabel">화이트</span>
+          </button>
+          <div class="mode-pill" aria-live="polite">
+            <span class="mode-dot" aria-hidden="true"></span>
+            <span id="modeLabel">현재 시간</span>
+          </div>
         </div>
       </header>
 
@@ -696,6 +855,8 @@
       sourceLink: document.querySelector("#sourceLink"),
       minuteMeter: document.querySelector("#minuteMeter"),
       modeLabel: document.querySelector("#modeLabel"),
+      themeToggle: document.querySelector("#themeToggle"),
+      themeLabel: document.querySelector("#themeLabel"),
       libraryToggle: document.querySelector("#libraryToggle"),
       libraryPanel: document.querySelector("#libraryPanel"),
       hourRail: document.querySelector("#hourRail"),
@@ -709,10 +870,34 @@
     const state = {
       live: true,
       selectedMinute: currentMinuteIndex(),
-      gridHour: new Date().getHours()
+      gridHour: new Date().getHours(),
+      theme: loadTheme()
     };
 
     const pad = (value) => String(value).padStart(2, "0");
+
+    function loadTheme() {
+      try {
+        return localStorage.getItem("literary-clock-theme") === "light" ? "light" : "dark";
+      } catch {
+        return "dark";
+      }
+    }
+
+    function saveTheme(theme) {
+      try {
+        localStorage.setItem("literary-clock-theme", theme);
+      } catch {
+        // Theme still changes for the current page even when storage is unavailable.
+      }
+    }
+
+    function applyTheme(theme) {
+      document.documentElement.dataset.theme = theme === "light" ? "light" : "dark";
+      els.themeToggle.setAttribute("aria-pressed", String(theme === "light"));
+      els.themeToggle.setAttribute("aria-label", theme === "light" ? "다크 테마로 전환" : "화이트 테마로 전환");
+      els.themeLabel.textContent = theme === "light" ? "다크" : "화이트";
+    }
 
     function currentMinuteIndex() {
       const now = new Date();
@@ -922,12 +1107,18 @@
 
     els.prevButton.addEventListener("click", () => shiftMinute(-1));
     els.nextButton.addEventListener("click", () => shiftMinute(1));
+    els.themeToggle.addEventListener("click", () => {
+      state.theme = state.theme === "light" ? "dark" : "light";
+      applyTheme(state.theme);
+      saveTheme(state.theme);
+    });
     els.libraryToggle.addEventListener("click", () => {
       const expanded = els.libraryToggle.getAttribute("aria-expanded") === "true";
       els.libraryToggle.setAttribute("aria-expanded", String(!expanded));
       els.libraryPanel.hidden = expanded;
     });
 
+    applyTheme(state.theme);
     render();
     window.setInterval(render, 1000);
   </script>
